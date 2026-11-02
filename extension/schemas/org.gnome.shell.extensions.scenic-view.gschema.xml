@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.scenic-view" path="/org/gnome/shell/extensions/scenic-view/">
+    <key name="outer-gap-horizontal" type="i">
+      <range min="0" max="200"/>
+      <default>32</default>
+      <summary>Gap to the left and right edges</summary>
+      <description>For maximized and tiled windows, in logical pixels, measured to panels.</description>
+    </key>
+    <key name="outer-gap-vertical" type="i">
+      <range min="0" max="200"/>
+      <default>32</default>
+      <summary>Gap to the top and bottom edges</summary>
+      <description>For maximized and tiled windows, in logical pixels, measured to panels.</description>
+    </key>
+    <key name="scenic-gap-horizontal" type="i">
+      <range min="0" max="1000"/>
+      <default>80</default>
+      <summary>Scenic view margin, left and right</summary>
+    </key>
+    <key name="scenic-gap-vertical" type="i">
+      <range min="0" max="1000"/>
+      <default>80</default>
+      <summary>Scenic view margin, top and bottom</summary>
+    </key>
+    <key name="keep-decoration-when-maximized" type="b">
+      <default>true</default>
+      <summary>Keep shadow and rounded corners on maximized windows</summary>
+      <description>Maximized windows become normal windows sized to the gapped area.</description>
+    </key>
+    <key name="toggle-scenic-view" type="as">
+      <default><![CDATA[['<Shift><Control><Alt><Super>Return']]]></default>
+      <summary>Toggle scenic view for the focused window</summary>
+    </key>
+  </schema>
+</schemalist>

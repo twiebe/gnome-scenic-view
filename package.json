@@ -1,0 +1,8 @@
+{
+  "name": "gnome-scenic-view",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/"
+  }
+}
