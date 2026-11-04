@@ -26,9 +26,10 @@ half tiling (Super+Left/Right, dragging to screen edges).
 | GNOME Shell | Status |
 |---|---|
 | **50** | Tested (50.6, Wayland, Bazzite): gaps, pseudo-maximize, scenic view, shortcut and settings |
+| **51** | Expected to work: all APIs the extension uses were checked against the 51.1 source, but not tested in a session yet |
 | 45 – 49 | Not declared in `metadata.json`. The code has fallbacks for the older maximize API, but this is untested |
 
-Wayland only (GNOME 50 has no X11 session).
+Wayland only (GNOME 50 and later have no X11 session).
 
 ## Installation
 

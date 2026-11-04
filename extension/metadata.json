@@ -2,7 +2,7 @@
   "uuid": "scenic-view@twiebe.github.com",
   "name": "Scenic View",
   "description": "Gaps around maximized and tiled windows, measured to panels, and a scenic view shortcut that maximizes with larger margins so more of the wallpaper stays visible.\n\nStays enabled on the lock screen only so that windows don't jump when the gap struts would be removed and added again; it does nothing there.",
-  "shell-version": ["50"],
+  "shell-version": ["50", "51"],
   "url": "https://github.com/twiebe/gnome-scenic-view",
   "settings-schema": "org.gnome.shell.extensions.scenic-view",
   "session-modes": ["user", "unlock-dialog"],
