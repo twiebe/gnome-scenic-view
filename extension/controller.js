@@ -317,8 +317,9 @@ export class ScenicController {
     }
 
     // The window was just maximized (or already was). Take the maximize back
-    // and pseudo-maximize it, or, if it was pseudo-maximized already, treat
-    // the maximize as un-maximize: its maximize button showed "not maximized".
+    // and pseudo-maximize it. If it was pseudo-maximized already, treat the
+    // maximize as un-maximize (its maximize button showed "not maximized");
+    // if it was in scenic view, pseudo-maximize it instead.
     _interceptMaximize(w) {
         if (this._pending.has(w))
             return;
@@ -333,7 +334,15 @@ export class ScenicController {
                 return;
             if (p && !dropped && this._pseudo.get(w) === p) {
                 this._own(w, () => this._p.unmaximize(w));
-                this._leave(w);
+                if (p.kind === 'scenic') {
+                    // Scenic view isn't maximized (the button says so too):
+                    // maximize, keeping the original restore geometry.
+                    p.kind = 'max';
+                    p.fromMax = false;
+                    this._refit(w);
+                } else {
+                    this._leave(w);
+                }
             } else {
                 this._enter(w, 'max', restore ?? G.defaultRestore(this._p.workArea(w)), false);
             }

@@ -120,6 +120,8 @@ extension un-maximizes it and sizes it to the gapped area. It stays a normal win
 with shadow and rounded corners. The extension tracks this "maximized" state itself:
 
 - Maximizing again (button, double-click, Super+Up) restores the previous size.
+- Maximizing a window in scenic view maximizes it (with the normal gaps); maximizing
+  it once more restores the size it had before.
 - Dragging the window or resizing it makes it a normal window again. Dropping it on
   the top screen edge maximizes it again.
 - Tiling it (Super+Left/Right) makes it a normal tiled window.

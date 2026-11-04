@@ -248,10 +248,36 @@ test('scenic view from a pseudo-maximized window goes back to maximized', () => 
     assert.deepEqual(w.rect, FLOAT);
 });
 
-test('maximizing a window in scenic view restores it', () => {
+test('maximizing a window in scenic view maximizes it, maximizing again restores it', () => {
     const t = new World();
     const w = t.window(FLOAT);
     t.shortcut(w);
+    t.advance(SETTLE_MS * 2);
+    t.userMaximize(w);
+    assert.equal(w.flags, 0);
+    assert.deepEqual(w.rect, t.workArea());
+    assert.equal(t.c.pseudoKind(w), 'max');
+    t.advance(SETTLE_MS * 2);
+    t.userMaximize(w);
+    assert.deepEqual(w.rect, FLOAT);
+    assert.ok(!t.c.isPseudo(w));
+});
+
+test('maximize, scenic view, maximize: maximized again, then the original size', () => {
+    const t = new World();
+    const w = t.window(FLOAT);
+    t.userMaximize(w);
+    t.shortcut(w);
+    assert.deepEqual(w.rect, t.scenic());
+    t.advance(SETTLE_MS * 2);
+    t.userMaximize(w);
+    assert.deepEqual(w.rect, t.workArea());
+    assert.equal(t.c.pseudoKind(w), 'max');
+    // The shortcut toggles scenic view from there as usual.
+    t.shortcut(w);
+    assert.deepEqual(w.rect, t.scenic());
+    t.shortcut(w);
+    assert.deepEqual(w.rect, t.workArea());
     t.advance(SETTLE_MS * 2);
     t.userMaximize(w);
     assert.deepEqual(w.rect, FLOAT);
